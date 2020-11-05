@@ -23,8 +23,8 @@ rm temp.txt
 if [ $NOCP == 'false' ];
 then    
         cd maintenance_custom_analyst	
-	git add --all
-	git commit -m 'New changes in tcp-qa skip lists or checklist'
-	git push origin master
+	#git add --all
+	#git commit -m 'New changes in tcp-qa skip lists or checklist'
+	#git push origin master
 	cd ..
 fi
