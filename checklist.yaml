@@ -176,6 +176,13 @@ tests:
     status: ProdFailed
     defects: PROD-35759
 
+  - title: test_prometheus_alert_count[AlertmanagerNotificationFailureWarning]
+    errors:
+      - Alertmanager webhook notifications on the
+      - fail for 2 minutes.
+    status: ProdFailed
+    defects: PROD-35884
+
   - title: test_ceph_health
     errors:
       - "1/3 mons down, quorum cmn01,cmn02"
@@ -221,6 +228,18 @@ tests:
       - Query "openstack_api_check_status{interface="public",service_name=~"octavia.*"}"
     status: ProdFailed
     defects: PROD-35860
+
+  - title: test_alerta_smoke
+    errors:
+      - "UnknownError: Missing authorization API Key or Bearer Token"
+    status: ProdFailed
+    defects: PROD-35882
+
+  - title: test_alerta_alerts_consistency
+    errors:
+      - "UnknownError: Missing authorization API Key or Bearer Token"
+    status: ProdFailed
+    defects: PROD-35882
 
 
 
