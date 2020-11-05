@@ -3,7 +3,7 @@
 cp tcp-qa/checklist.yaml maintenance_custom_analyst/
 find . -name *skip.list | grep released-heat-cicd >>temp.txt
 NAME=''
-NOCP='false'
+NOCP='true'
 while read LINE
     do 	    NAME=$LINE
 	    NAME=$(echo $NAME | sed 's/.\/tcp-qa\/tcp_tests\/templates\/released-heat-cicd-//' | sed 's/\/tempest_skip.list//')
