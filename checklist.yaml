@@ -195,6 +195,41 @@ tests:
     status: ProdFailed
     defects: PROD-35761
 
+  - title: test_prometheus_alert_count[DockerdServiceReplicaFlapping]
+    comment: New in 2019.2.12
+    errors:
+      - Docker Swarm monitoring_alertmanager service replica is flapping for 15 minutes.
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_public_ui_alert_manager
+    comment: New in 2019.2.12
+    errors:
+      - 502 Bad Gateway
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_internal_ui_alert_manager
+    comment: New in 2019.2.12
+    errors:
+      - Internal AlertManager page is not reachable on http://10.6.0.70:15011 from ctl nodes
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_prometheus_alert_count[PrometheusTargetDown]
+    comment: New in 2019.2.12
+    errors:
+      - The Prometheus target for the alertmanager job on the 10.0.0.147:9093 node is down
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_prometheus_alert_count[DockerServiceMonitoringAlertmanagerReplicasDownMinor]
+    comment: New in 2019.2.12
+    errors:
+      - Docker Swarm 'monitoring_alertmanager' service replicas are down
+    defects: PROD-35958
+    status: ProdFailed
+
 ## ==================================================
 #              LMA2.0_Automated
 ## ==================================================
@@ -240,6 +275,62 @@ tests:
       - "UnknownError: Missing authorization API Key or Bearer Token"
     status: ProdFailed
     defects: PROD-35882
+
+  - title: test_kpi_metrics
+    errors:
+      - 'TimeoutError: Waiting timed out'
+    status: TestFailed
+    defects: PROD-35920
+
+  - title: test_docker_container_status
+    comment: New in 2019.2.12
+    errors:
+      - "Container monitoring_alertmanager.1 on the node mon01 has incorrect state 'Ready'. Current state: 'Ready"
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_alertmanager_endpoint_availability
+    comment: New in 2019.2.12
+    errors:
+      - E       assert False
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_alertmanager_ha
+    comment: New in 2019.2.12
+    errors:
+      - E       assert False
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_docker_service_replicas
+    comment: New in 2019.2.12
+    errors:
+      - Service 'monitoring_alertmanager' in mode 'replicated' has incorrect count of replicas
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_prometheus_targets
+    comment: New in 2019.2.12
+    errors:
+      - Incorrect count of metrics for alertmanager target
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_grafana_dashboard_panel_queries[alertmanager]
+    comment: New in 2019.2.12
+    errors:
+      - assert (3 == 0)
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_alerta_alerts_consistency
+    comment: New in 2019.2.12
+    errors:
+      - "HTTPConnectionPool(host='10.6.0.70', port=15011): Max retries exceeded with url: /api/v1/alerts"
+    defects: PROD-35932
+    status: ProdFailed
+
 
 
 
