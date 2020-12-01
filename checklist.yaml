@@ -52,6 +52,12 @@ tests:
     status: ProdFailed
     defects: PROD-35212
 
+  - title: tempest.api.compute.servers.test_virtual_interfaces.VirtualInterfacesTestJSON.test_list_virtual_interfaces[id-96c4e2ef-5e4d-4d7f-87f5-fed6dca18016,network]
+    errors:
+      - self.client.list_virtual_interfaces(self.server['id'])
+      - BadRequest not raised
+    status: ProdFailed
+    defects: PROD-35966
 
   - title: ".setUpClass (tempest.api.compute.images.test_list_image_filters.ListImageFiltersTestJSON)"
     errors:
@@ -60,6 +66,14 @@ tests:
       - "Details: 502"
     status: ProdFailed
     defects: PROD-35212
+
+  - title: tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_get_console_output_server_id_in_shutoff_status[id-5b65d4e7-4ecd-437c-83c0-d6b79d927568]
+    errors:
+      - "502 POST https://10.6.0.80:8774/v2.1/servers"
+      - "tempest.lib.exceptions.UnexpectedResponseCode: Unexpected response code received"
+      - "Details: 502"
+    status: ProdFailed
+    defects: PROD-35224
 
   - title: "tempest.api.compute.images.test_images.ImagesTestJSON.test_create_delete_image[id-3731d080-d4c5-4872-b41a-64d0d0021314]"
     errors:
@@ -95,6 +109,66 @@ tests:
     status: ProdFailed
     defects: PROD-35212
 
+  - title: tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_create_backup[id-b963d4f1-94b3-4c40-9e97-7b583f46e470,image]
+    errors:
+      - show_loadbalancer provisioning_status updated to an invalid state of ERROR
+    status: ProdFailed
+    defects: PROD-34693
+
+  - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_ipv6_create[id-fc9996de-4f55-4fc4-b8ef-a4b9170c7078]
+    errors:
+      - show_loadbalancer provisioning_status updated to an invalid state of ERROR
+    status: ProdFailed
+    defects: PROD-34693
+
+  - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_list[id-6546ef3c-c0e2-46af-b892-f795f4d01119,smoke]
+    errors:
+      - show_loadbalancer provisioning_status updated to an invalid state of ERROR
+    status: ProdFailed
+    defects: PROD-34693
+
+  - title: octavia_tempest_plugin.tests.scenario.v2.test_load_balancer.LoadBalancerScenarioTest.test_load_balancer_ipv6_CRUD[id-86ffecc4-dce8-46f9-936e-8a4c6bcf3959]
+    errors:
+      - show_loadbalancer provisioning_status updated to an invalid state of ERROR
+    status: ProdFailed
+    defects: PROD-34693
+
+  - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_update[id-b75a4d15-49d2-4149-a745-635eed1aacc3]
+    errors:
+      - show_loadbalancer provisioning_status updated to an invalid state of ERROR
+    status: ProdFailed
+    defects: PROD-34693
+
+
+  - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_delete_cascade[id-643ef031-c800-45f2-b229-3c8f8b37c829]
+    errors:
+      - show_loadbalancer provisioning_status updated to an invalid state of ERROR
+    status: ProdFailed
+    defects: PROD-34693
+
+  - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_delete[id-643ef031-c800-45f2-b229-3c8f8b37c829]
+    errors:
+      - show_loadbalancer provisioning_status updated to an invalid state of ERROR
+    status: ProdFailed
+    defects: PROD-34693
+
+  - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_show_status[id-60acc1b0-fa46-41f8-b526-c81ae2f42c30]
+    errors:
+      - show_loadbalancer provisioning_status updated to an invalid state of ERROR
+    status: ProdFailed
+    defects: PROD-34693
+
+  - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_ipv4_create[id-61c6343c-a5d2-4b9f-8c7d-34ea83f0596b]
+    errors:
+      - show_loadbalancer provisioning_status updated to an invalid state of ERROR
+    status: ProdFailed
+    defects: PROD-34693
+
+  - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_show_stats[id-105afcba-4dd6-46d6-8fa4-bd7330aa1259]
+    errors:
+      - show_loadbalancer provisioning_status updated to an invalid state of ERROR
+    status: ProdFailed
+    defects: PROD-34693
 
 # ---------------------------------------------------
   - title: "tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_get_console_output_server_id_in_shutoff_status[id-5b65d4e7-4ecd-437c-83c0-d6b79d927568]"
@@ -216,6 +290,14 @@ tests:
     defects: PROD-35958
     status: ProdFailed
 
+  - title: test_stacklight_services_replicas
+    comment: New in 2019.2.12
+    errors:
+      - Some monitoring services don't have the expected number of replicas
+      - docker-prod-local.docker.mirantis.net/openstack-docker/alertmanager:2019.2.4
+    defects: PROD-35958
+    status: ProdFailed
+
   - title: test_prometheus_alert_count[PrometheusTargetDown]
     comment: New in 2019.2.12
     errors:
@@ -324,11 +406,40 @@ tests:
     defects: PROD-35958
     status: ProdFailed
 
+  - title: test_prometheus_targets
+    comment: New in 2019.2.12
+    errors:
+      -  Incorrect value in metric up{job="alertmanager"}
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_docker_container_status
+    comment: New in 2019.2.12
+    errors:
+      - Container monitoring_alertmanager
+      - "has incorrect state 'Ready'. Current state: 'Assigned less than a second ago'"
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_prometheus_relay
+    comment: New in 2019.2.12
+    errors:
+      - "TypeError: 'NoneType' object is not iterable"
+    defects: PROD-35958
+    status: ProdFailed
+
   - title: test_alerta_alerts_consistency
     comment: New in 2019.2.12
     errors:
       - "HTTPConnectionPool(host='10.6.0.70', port=15011): Max retries exceeded with url: /api/v1/alerts"
     defects: PROD-35932
+    status: ProdFailed
+
+  - title: test_fluentd_logs[kibana]
+    comment: New in 2019.2.12
+    errors:
+      - "Loggers with mask 'kibana.*' not found in logger list "
+    defects: PROD-35965
     status: ProdFailed
 
 
