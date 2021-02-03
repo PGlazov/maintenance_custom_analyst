@@ -34,21 +34,33 @@ tests:
     status: ProdFailed
     defects: PROD-35212
 
+  - title: "tempest.api.compute.images.test_images.ImagesTestJSON.test_create_image_from_paused_server[id-71bcb732-0261-11e7-9086-fa163e4fa634]"
+    errors:
+      - "502 DELETE https://10.6.0.80:8774/v2.1/images/"
+    status: ProdFailed
+    defects: PROD-35212
+
   - title: "tempest.api.compute.images.test_images.ImagesTestJSON.test_create_image_from_stopped_server[id-aaacd1d0-55a2-4ce8-818a-b5439df8adc9]"
     errors:
       - "502 GET https://10.6.0.80:8774/v2.1/images/"
     status: ProdFailed
     defects: PROD-35212
 
+  - title: "tempest.api.compute.images.test_images.ImagesTestJSON.test_create_image_from_stopped_server[id-aaacd1d0-55a2-4ce8-818a-b5439df8adc9]"
+    errors:
+      - "502 DELETE https://10.6.0.80:8774/v2.1/images/"
+    status: ProdFailed
+    defects: PROD-35212
+
   - title: "tempest.api.compute.images.test_images.ImagesTestJSON.test_create_image_from_suspended_server[id-8ca07fec-0262-11e7-907e-fa163e4fa634]"
     errors:
-      - "502 GET https://10.6.0.80:8774/v2.1/images/"
+      - "502 DELETE https://10.6.0.80:8774/v2.1/images/"
     status: ProdFailed
     defects: PROD-35212
 
   - title: "tempest.api.compute.images.test_images_oneserver.ImagesOneServerTestJSON.test_create_delete_image[id-3731d080-d4c5-4872-b41a-64d0d0021314]"
     errors:
-      - "502 GET https://10.6.0.80:8774/v2.1/images/"
+      - "502 DELETE https://10.6.0.80:8774/v2.1/images/"
     status: ProdFailed
     defects: PROD-35212
 
@@ -82,6 +94,12 @@ tests:
     status: ProdFailed
     defects: PROD-35223
 
+  - title: "tempest.api.compute.images.test_images.ImagesTestJSON.test_create_image_from_paused_server[id-71bcb732-0261-11e7-9086-fa163e4fa634]"
+    errors:
+      - "failed to reach ACTIVE state (current state SAVING) within the required time (600 s)."
+    status: ProdFailed
+    defects: PROD-35223
+
   - title: ".setUpClass (tempest.api.compute.images.test_list_image_filters.ListImageFiltersTestJSON)"
     errors:
       - 'resp, body = self.get("images/%s" % image_id)'
@@ -90,6 +108,13 @@ tests:
     defects: PROD-35212
 
   - title: ".tearDownClass (tempest.api.image.v2.test_images.ListUserImagesTest)"
+    errors:
+      - "raise testtools.MultipleExceptions(*cleanup_errors)"
+      - "Details: 502, <traceback object at"
+    status: ProdFailed
+    defects: PROD-35212
+
+  - title: ".tearDownClass (tempest.api.compute.images.test_list_image_filters.ListImageFiltersTestJSON)"
     errors:
       - "raise testtools.MultipleExceptions(*cleanup_errors)"
       - "Details: 502, <traceback object at"
@@ -108,6 +133,26 @@ tests:
       - 502 GET https://10.6.0.80:9292/v2/images/
     status: ProdFailed
     defects: PROD-35212
+
+  - title: tempest.api.volume.test_volumes_actions.VolumesActionsTest.test_volume_upload[id-d8f1ca95-3d5b-44a3-b8ca-909691c9532d,image]
+    errors:
+      - 502 GET https://10.6.0.80:9292/v2/images/
+    status: ProdFailed
+    defects: PROD-35212
+
+  - title: tempest.api.compute.servers.test_delete_server.DeleteServersTestJSON.test_delete_server_while_in_shelved_state[id-bb0cb402-09dd-4947-b6e5-5e7e1cfa61ad]
+    errors:
+      - 'tempest.lib.exceptions.TimeoutException: Request timed out'
+      - 'failed to reach SHELVED_OFFLOADED status and task state "None" within the required time (600 s). Current status: SHELVED. Current task state: shelving_offloading'
+    status: ProdFailed
+    defects: PROD-35225
+
+  - title: tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_create_backup[id-b963d4f1-94b3-4c40-9e97-7b583f46e470,image]
+    errors:
+      - failed to reach active state (current state saving) within the required time
+    status: ProdFailed
+    defects: PROD-35222
+
 
   - title: tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_create_backup[id-b963d4f1-94b3-4c40-9e97-7b583f46e470,image]
     errors:
@@ -158,6 +203,12 @@ tests:
     status: ProdFailed
     defects: PROD-34693
 
+  - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_show[id-826ae612-8717-4c64-a8a7-cb9570a85870]
+    errors:
+      - show_loadbalancer provisioning_status updated to an invalid state of ERROR
+    status: ProdFailed
+    defects: PROD-34693
+
   - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_ipv4_create[id-61c6343c-a5d2-4b9f-8c7d-34ea83f0596b]
     errors:
       - show_loadbalancer provisioning_status updated to an invalid state of ERROR
@@ -165,6 +216,12 @@ tests:
     defects: PROD-34693
 
   - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_show_stats[id-105afcba-4dd6-46d6-8fa4-bd7330aa1259]
+    errors:
+      - show_loadbalancer provisioning_status updated to an invalid state of ERROR
+    status: ProdFailed
+    defects: PROD-34693
+
+  - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_failover[id-fc2e07a6-9776-4559-90c9-141170d4c397]
     errors:
       - show_loadbalancer provisioning_status updated to an invalid state of ERROR
     status: ProdFailed
@@ -311,6 +368,18 @@ tests:
       - Docker Swarm 'monitoring_alertmanager' service replicas are down
     defects: PROD-35958
     status: ProdFailed
+
+  - title: test_prometheus_alert_count[SystemCpuStealTimeWarning]
+    comment: Some unstabilities after deployment. Error has gone after some time
+    errors:
+      - The CPU steal time was above
+    status: MixedSuccess
+
+  - title: test_prometheus_alert_count[NetdevBudgetRanOutsWarning]
+    comment: Some unstabilities after deployment. Error has gone after some time
+    errors:
+      - The rate of net_rx_action loops terminations
+    status: MixedSuccess
 
 ## ==================================================
 #              LMA2.0_Automated
