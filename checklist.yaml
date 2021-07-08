@@ -1,5 +1,24 @@
 tests:
 
+  - title: deployment_*
+    errors:
+      - 'special characters are not allowed'
+    status: ProdFailed
+    defects: PROD-0
+
+  - title: deployment_*
+    errors:
+      - "SaltReqTimeoutError: Message timed out"
+    status: ProdFailed
+    defects: PROD-35053
+
+  - title: deployment_*
+    errors:
+      - "Exception: Step 'Configure salt-minion on osd"
+      - No space left on device
+    status: ProdFailed
+    defects: PROD-36101
+
   - title: 'tempest.api.network.admin.test_routers.RoutersAdminTest.test_update_router_set_gateway[id-6cc285d8-46bf-4f36-9b1a-783e3008ba79]'
     errors:
       - 'testtools.matchers._impl.MismatchError: 0 != 1'
@@ -140,6 +159,12 @@ tests:
     status: ProdFailed
     defects: PROD-35212
 
+  - title: tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_from_image_with_decreasing_size[id-5b810c91-0ad1-47ce-aee8-615f789be78f,image,negative]
+    errors:
+      - 502 PUT https://10.6.0.80:9292/v2/images/
+    status: ProdFailed
+    defects: PROD-35212
+
   - title: tempest.api.compute.servers.test_delete_server.DeleteServersTestJSON.test_delete_server_while_in_shelved_state[id-bb0cb402-09dd-4947-b6e5-5e7e1cfa61ad]
     errors:
       - 'tempest.lib.exceptions.TimeoutException: Request timed out'
@@ -165,6 +190,13 @@ tests:
       - show_loadbalancer provisioning_status updated to an invalid state of ERROR
     status: ProdFailed
     defects: PROD-34693
+
+  - title: tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_create_backup[id-b963d4f1-94b3-4c40-9e97-7b583f46e470,image]
+    errors:
+      - "message': u'No image found with ID"
+      - "u'code': u'404 Not Found'"
+    status: ProdFailed
+    defects: PROD-36275
 
   - title: octavia_tempest_plugin.tests.api.v2.test_load_balancer.LoadBalancerAPITest.test_load_balancer_list[id-6546ef3c-c0e2-46af-b892-f795f4d01119,smoke]
     errors:
@@ -258,6 +290,13 @@ tests:
       - "IndexError: list index out of range"
     status: ProdFailed
     defects: PROD-25221
+
+  - title: tempest.api.compute.servers.test_attach_interfaces.AttachInterfacesTestJSON.test_create_list_show_delete_interfaces_by_fixed_ip[id-d290c06c-f5b3-11e7-8ec8-002293781009,network]
+    errors:
+      - 'tempest.lib.exceptions.NotFound: Object not found'
+      - "u'type': u'PortNotFound'"
+    status: ProdFailed
+    defects: PROD-29650
 
 ## ==================================================
 #             CVP SANITY
@@ -483,10 +522,16 @@ tests:
     status: ProdFailed
 
   - title: test_docker_container_status
-    comment: New in 2019.2.12
+    comment: New in 2019.2.14
     errors:
-      - Container monitoring_alertmanager
-      - "has incorrect state 'Ready'. Current state: 'Assigned less than a second ago'"
+      - "Container monitoring_alerta.1 on the node mon01 has incorrect state 'Ready'. Current state: 'Ready 1 second ago'"
+    defects: PROD-35958
+    status: ProdFailed
+
+  - title: test_docker_service_replicas
+    comment: New in 2019.2.14
+    errors:
+      - "Service 'monitoring_alerta' in mode 'replicated' has incorrect count of replicas: 0/1"
     defects: PROD-35958
     status: ProdFailed
 
