@@ -66,4 +66,29 @@ tempest.scenario.test_shelve_instance.TestShelveInstance.test_shelve_volume_back
 tempest.scenario.test_snapshot_pattern.TestSnapshotPattern.test_snapshot_pattern
 tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern.test_volume_boot_pattern
 
+# PROD-25940 for contrail only
+tempest.api.network.admin.test_quotas.QuotasTest.test_quotas\b
+
+# PROD-33719 for contrail only
+tempest.api.network.admin.test_routers.RoutersAdminTest.test_update_router_set_gateway
+tempest.api.network.admin.test_routers.RoutersIpV6AdminTest.test_update_router_set_gateway
+
+# PROD-25128 [OC 4.x][Tempest] Parameter "strict_compliance" is False by default
+tempest.api.network.test_floating_ips_negative.FloatingIPNegativeTestJSON.test_associate_floatingip_port_ext_net_unreachable
+tempest.api.network.test_floating_ips_negative.FloatingIPNegativeTestJSON.test_create_floatingip_with_port_ext_net_unreachable
+
+# PROD-21671 [OpenContrail 4.0] Unable to update "subnet-id" for port (test_update_port_with_security_group_and_extra_attributes)
+tempest.api.network.test_ports.PortsIpV6TestJSON.test_update_port_with_security_group_and_extra_attributes
+tempest.api.network.test_ports.PortsTestJSON.test_update_port_with_security_group_and_extra_attributes
+tempest.api.network.test_ports.PortsIpV6TestJSON.test_update_port_with_two_security_groups_and_extra_attributes
+tempest.api.network.test_ports.PortsTestJSON.test_update_port_with_two_security_groups_and_extra_attributes
+
+# PROD-31179 Several tempest tests are failed on contrail configuration on checks for floating ip connectivity
+tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_network_basic_ops
+tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_port_security_macspoofing_port
+tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_update_router_admin_state
+
+# PROD-25586 [OC4.x][Tempest] Heat can't update port's mac address
+heat_tempest_plugin.tests.functional.test_create_update_neutron_port.UpdatePortTest.test_update_with_mac_address
+
 

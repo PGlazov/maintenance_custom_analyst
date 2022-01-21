@@ -359,6 +359,13 @@ tests:
     status: ProdFailed
     defects: PROD-35761
 
+  - title: test_ceph_health
+    errors:
+      - client is using insecure global_id reclaim
+      - mons are allowing insecure global_id reclaim
+    status: ProdFailed
+    defects: PROD-36461
+
   - title: test_prometheus_alert_count[CephMonitorDownMinor]
     errors:
       - "1 of Ceph Monitors are down"
